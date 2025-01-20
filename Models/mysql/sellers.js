@@ -1,7 +1,7 @@
 
 const Sequelize = require('sequelize');
 
-const sequelize = require('../utils/db');
+const sequelize = require('../../utils/dbmysql');
 const Seller = sequelize.define('Seller', {
     id: {
         type: Sequelize.INTEGER,

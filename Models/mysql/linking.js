@@ -1,4 +1,4 @@
-const sequelize = require('../utils/db');
+const sequelize = require('../../utils/dbmysql');
 
 sequelize
     .sync({force:false})
