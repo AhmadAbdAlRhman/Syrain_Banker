@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer</title>
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+    <h1>Customer Notifications</h1>
+    <p>Customer ID: <span id="customerId"></span></p>
+    <input type="text" id="orderDetails" placeholder="Enter order details" />
+    <input type="text" id="sellerId" placeholder="Enter seller ID" />
+    <button id="placeOrder">Place Order</button>
+    <ul id="notifications"></ul>
+
+    <script>
+        const customerId = 'customer123'; // Replace with dynamic ID
+        document.getElementById('customerId').textContent = customerId;
+
+        const socket = io('/customers');
+
+        // Join customer's room
+        socket.emit('joinRoom', customerId);
+
+        // Place an order
+        document.getElementById('placeOrder').addEventListener('click', () => {
+            const orderDetails = document.getElementById('orderDetails').value;
+            const sellerId = document.getElementById('sellerId').value;
+
+            if (orderDetails && sellerId) {
+                socket.emit('placeOrder', { sellerId, orderDetails });
+                alert('Order placed!');
+            } else {
+                alert('Please fill in all fields!');
+            }
+        });
+
+        // Receive notifications
+        socket.on('notification', (message) => {
+            const notifications = document.getElementById('notifications');
+            const li = document.createElement('li');
+            li.textContent = message;
+            notifications.appendChild(li);
+        });
+    </script>
+</body>
+</html>

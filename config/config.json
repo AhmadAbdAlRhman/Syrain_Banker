@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "root",
+    "password": "Ahmad45@2000",
+    "database": "socketandnode",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": "Ahmad45@2000",
+    "database": "socketandnode",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": "Ahmad45@2000",
+    "database": "socketandnode",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}

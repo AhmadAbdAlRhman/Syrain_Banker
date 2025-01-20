@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller</title>
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+    <h1>Seller Notifications</h1>
+    <p>Seller ID: <span id="sellerId"></span></p>
+    <ul id="orders"></ul>
+
+    <script>
+        const sellerId = 'seller123'; // Replace with dynamic ID
+        document.getElementById('sellerId').textContent = sellerId;
+
+        const socket = io('/sellers');
+
+        // Join seller's room
+        socket.emit('joinRoom', sellerId);
+
+        // Receive new order notifications
+        socket.on('newOrder', (orderDetails) => {
+            const orders = document.getElementById('orders');
+            const li = document.createElement('li');
+            li.textContent = `New Order: ${orderDetails}`;
+            orders.appendChild(li);
+        });
+    </script>
+</body>
+</html>
