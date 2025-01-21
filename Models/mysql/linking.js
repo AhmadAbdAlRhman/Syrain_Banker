@@ -9,5 +9,8 @@ sequelize
         console.error('Unable to connect to the database:', error);
     });
 
-require('./customer');
-require('./sellers');
+require('./Users');
+require('./Products');
+require('./product_images');
+require('./categories');
+require('./order');
