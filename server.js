@@ -18,7 +18,7 @@ app.use(express.static('public'));
 // Routes
 app.use('/auth', authRoutes);
 //Model
-require('./Models/mysql/linking');
+// require('./Models/mysql/linking');
 require('./Models/mongodb/linking');
 const server = http.createServer(app);
 
