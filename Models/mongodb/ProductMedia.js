@@ -3,34 +3,22 @@ const Schema = mongoose.Schema;
 
 const userSchema = new mongoose.Schema({
     product_id: {
-        type: String,
+        type: Schema.Types.ObjectId,
+        ref: 'Prodcts',
         required: true
-    },
-    product_description: {
-        type: String,
-        required: true
-    },
-    product_sponsership: {
-        type: String,
-        required: false
     },
     product_image: {
         type: String,
-        required: true,
+        required: false,
         unique: true
     },
-    product_price: {
+    product_vedio: {
         type: String,
-        required: true,
-        unique: false
-    },
-    product_OwnerId: {
-        type: Schema.Types.ObjectId,
-        ref: 'Market',
-        required: true
-    },
+        required: false,
+        unique: true
+    }
 });
 
-const Products = mongoose.model('Products', userSchema);
+const ProductMedia = mongoose.model('ProductMedia', userSchema);
 
-module.exports = Products;
+module.exports = ProductMedia;
